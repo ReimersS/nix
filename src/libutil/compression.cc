@@ -99,7 +99,7 @@ struct ArchiveCompressionSink : CompressionSink
     {
         if (err == ARCHIVE_EOF)
             throw EndOfFile("reached end of archive");
-        else if (err != ARCHIVE_OK)
+        else if ((err != ARCHIVE_OK) && (err != ARCHIVE_WARN))
             throw Error(reason, archive_error_string(this->archive));
     }
 
